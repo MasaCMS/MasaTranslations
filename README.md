@@ -1,4 +1,4 @@
-# Mura Translations
+# Masa Translations
 
 This plugin manages translations between multiple [Mura CMS](http://www.getmura.com) sites and locales.
 

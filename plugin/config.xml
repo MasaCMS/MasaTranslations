@@ -14,8 +14,8 @@
    limitations under the License.
 -->
 <plugin>
-<name>Mura Translations</name>
-<package>MuraTranslations</package>
+<name>Masa Translations</name>
+<package>MasaTranslations</package>
 <directoryFormat>packageOnly</directoryFormat>
 <version>4.0.0</version>
 <provider>Blue River</provider>
