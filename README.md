@@ -1,12 +1,8 @@
 # Masa Translations
 
-This plugin manages translations between multiple [Mura CMS](http://www.getmura.com) sites and locales.
+This plugin manages translations between multiple [Masa CMS](https://www.masacms.com/) sites and locales.
 
-As of version 3.0, this plugin includes the ability to export a site and translate it externally, then import the content into a second site. This can be done multiple times (allowing changes and new content to be translated externally as well).
-
-For an overview video of Mura Translations, please visit https://www.youtube.com/watch?v=GnMUuFw2SK0. While the video itself is for an older version of the plugin, the general concepts still apply to the most current version.
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GnMUuFw2SK0/0.jpg)](https://www.youtube.com/watch?v=GnMUuFw2SK0)
+This plugin includes the ability to export a site and translate it externally, then import the content into a second site. This can be done multiple times (allowing changes and new content to be translated externally as well).
 
 ## License
 

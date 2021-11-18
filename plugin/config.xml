@@ -17,9 +17,9 @@
 <name>Masa Translations</name>
 <package>MasaTranslations</package>
 <directoryFormat>packageOnly</directoryFormat>
-<version>4.0.0</version>
-<provider>Blue River</provider>
-<providerURL>https://github.com/blueriver/MuraTranslations</providerURL>
+<version>4.1.0</version>
+<provider>We Are Orange BV</provider>
+<providerURL>https://www.weareorange.eu/</providerURL>
 <category>Application</category>
 <settings>
 	<setting>

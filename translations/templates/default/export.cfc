@@ -228,7 +228,7 @@
 
 					<!--- woops, you are importing from the original! --->
 					<cfif siteID eq $.event('siteID')>
-						<cfreturn "The current SiteID (#siteID#) cannot import its own source as a translation. You must create a new site within this Mura CMS instance and import the translation there." />
+						<cfreturn "The current SiteID (#siteID#) cannot import its own source as a translation. You must create a new site within this Masa CMS instance and import the translation there." />
 					</cfif>
 
 					<cfset contentID = xmlContent.xmlRoot.xmlAttributes.ID />

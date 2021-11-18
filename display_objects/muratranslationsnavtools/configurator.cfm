@@ -1,7 +1,7 @@
 <cfscript>
 /**
 *
-* This file is part of Mura Translations
+* This file is part of Masa CMS Translations Plugin
 *
 * Copyright 2011-2016 Blue River Interactive
 * Licensed under the Apache License, Version v2.0
