@@ -59,6 +59,6 @@
     "scripts":{},
     "shortDescription":"This plugin manages translations between multiple Masa CMS sites and locales.",
     "slug":"MasaTranslations",
-    "type":"modules",
+    "type":"plugins",
     "version":"4.1.0"
 }
