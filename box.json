@@ -1,5 +1,5 @@
 {
-    "author":"We Are Orange BV",
+    "author":"We Are North Groep BV",
     "organization": "MasaCMS",
     "bugs":"https://github.com/MasaCMS/MasaTranslations/issues",
     "changelog":"",
@@ -59,6 +59,6 @@
     "scripts":{},
     "shortDescription":"This plugin manages translations between multiple Masa CMS sites and locales.",
     "slug":"MasaTranslations",
-    "type":"plugins",
-    "version":"4.1.0"
+    "type":"modules",
+    "version":"4.1.1"
 }

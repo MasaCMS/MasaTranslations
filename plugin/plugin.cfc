@@ -31,71 +31,76 @@
 		<cfset var x = "">
 		<cfset var aSql = "">
 		
-        <cfif application.configBean.getDBType() eq "mysql">
-            <cfsavecontent variable="sql">
-                <cfinclude template="../dbScripts/mysqlInstall.cfm">
-            </cfsavecontent>
-            
-            <cfset aSql = ListToArray(sql, ';')>
-    
-            <cfloop index="x" from="1" to="#arrayLen(aSql)#">
-                <cfif len(trim(aSql[x]))>
-				<cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
-                    #keepSingleQuotes(aSql[x])#
+        <cftry>
+            <cfif application.configBean.getDBType() eq "mysql">
+                <cfsavecontent variable="sql">
+                    <cfinclude template="../dbScripts/mysqlInstall.cfm">
+                </cfsavecontent>
+                
+                <cfset aSql = ListToArray(sql, ';')>
+        
+                <cfloop index="x" from="1" to="#arrayLen(aSql)#">
+                    <cfif len(trim(aSql[x]))>
+                    <cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
+                        #keepSingleQuotes(aSql[x])#
+                    </cfquery>
+                    </cfif>
+                </cfloop>
+                
+                <cfset applyUpdates()/>
+
+            <cfelseif application.configBean.getDBType() eq "postgresql">
+                <cfsavecontent variable="sql">
+                    <cfinclude template="../dbScripts/postgresqlInstall.cfm">
+                </cfsavecontent>
+
+                <cfset aSql = ListToArray(sql, ';')>
+
+                <cfloop index="x" from="1" to="#arrayLen(aSql)#">
+                    <cfif len(trim(aSql[x]))>
+                    <cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
+                        #keepSingleQuotes(aSql[x])#
+                    </cfquery>
+                    </cfif>
+                </cfloop>
+
+                <cfset applyUpdates()/>
+                
+            <cfelseif application.configBean.getDBType() eq "mssql">
+                <cfsavecontent variable="sql">
+                    <cfinclude template="../dbScripts/mssqlInstall.cfm">
+                </cfsavecontent>
+        
+                <cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
+                    #keepSingleQuotes(sql)#
                 </cfquery>
-				</cfif>
-            </cfloop>
-			
-			<cfset applyUpdates()/>
+                
+                <cfset applyUpdates()/>
+                
+            <cfelseif application.configBean.getDBType() eq "oracle">
+                    <cfsavecontent variable="sql">
+                        <cfinclude template="../dbScripts/oracleInstall.cfm">
+                    </cfsavecontent>
 
-        <cfelseif application.configBean.getDBType() eq "postgresql">
-            <cfsavecontent variable="sql">
-                <cfinclude template="../dbScripts/postgresqlInstall.cfm">
-            </cfsavecontent>
+                    <cfset aSql = ListToArray(sql, ';')>
 
-            <cfset aSql = ListToArray(sql, ';')>
+                    <cfloop index="x" from="1" to="#arrayLen(aSql) - 1#">
+                        <cfif len(trim(aSql[x]))>
+                        <cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
+                            #keepSingleQuotes(aSql[x])#
+                        </cfquery>
+                        </cfif>
+                    </cfloop>
+                    
+                    <cfset applyUpdates()/>
+            <cfelse>
+                    <h1>Only MySQL, Microsoft SQL Server, PostgreSQL and Oracle are supported.</h1>
+                <cfabort>
+            </cfif>
+            <cfcatch type="any">
 
-            <cfloop index="x" from="1" to="#arrayLen(aSql)#">
-                <cfif len(trim(aSql[x]))>
-				<cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
-                    #keepSingleQuotes(aSql[x])#
-                </cfquery>
-				</cfif>
-            </cfloop>
-
-			<cfset applyUpdates()/>
-            
-        <cfelseif application.configBean.getDBType() eq "mssql">
-        	<cfsavecontent variable="sql">
-                <cfinclude template="../dbScripts/mssqlInstall.cfm">
-            </cfsavecontent>
-    
-            <cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
-                #keepSingleQuotes(sql)#
-            </cfquery>
-            
-			<cfset applyUpdates()/>
-			
-		<cfelseif application.configBean.getDBType() eq "oracle">
-	        	<cfsavecontent variable="sql">
-	                <cfinclude template="../dbScripts/oracleInstall.cfm">
-	            </cfsavecontent>
-
-	             <cfset aSql = ListToArray(sql, ';')>
-
-		         <cfloop index="x" from="1" to="#arrayLen(aSql) - 1#">
-		             <cfif len(trim(aSql[x]))>
-		             <cfquery datasource="#application.configBean.getDatasource()#" username="#application.configBean.getDBUsername()#" password="#application.configBean.getDBPassword()#">
-		                 #keepSingleQuotes(aSql[x])#
-		             </cfquery>
-		             </cfif>
-		         </cfloop>
-		         
-		         <cfset applyUpdates()/>
-        <cfelse>
-        		<h1>Only MySQL, Microsoft SQL Server, PostgreSQL and Oracle are supported.</h1>
-        	<cfabort>
-        </cfif>
+            </cfcatch>
+        </cftry>
 	</cffunction>
 	
 	<cffunction name="update" returntype="void" access="public" output="false">

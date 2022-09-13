@@ -102,7 +102,7 @@
 				</tr>
 				<tr>
 					<td class="var-width">Nav Tools</td>
-					<td class="var-width">##m.dspObject(object='muratranslationstools')##</td>
+					<td class="var-width">##m.dspObject(object='masatranslationstools')##</td>
 				</tr>
 			</table>
 			</div> <!-- /.block-content -->

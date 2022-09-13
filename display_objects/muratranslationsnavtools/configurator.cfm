@@ -8,18 +8,26 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
-  param name="objectparams.muratranslationstooltype" default="list";
+  param name="objectparams.async" default="true";
+  param name="objectparams.render" default="server";
+  param name="objectparams.masatranslationstooltype" default="list";
 </cfscript>
-<cfoutput>
-  <div class="mura-control-group">
-  		<label class="mura-control-label" for="muratranslationstooltype">Tool Type</label>
-  		<label class="radio inline">
-  			<input type="radio" class="objectParam" name="muratranslationstooltype" value="list" <cfif objectparams.muratranslationstooltype eq 'list'> checked="checked"</cfif> />
-  			List
-  		</label>
-  		<label class="radio inline">
-  			<input type="radio" class="objectParam" name="muratranslationstooltype" value="selectbox" <cfif objectparams.muratranslationstooltype eq 'selectbox'> checked="checked"</cfif> />
-  			SelectBox
-  		</label>
-  	</div>
-</cfoutput>
+<cfsavecontent variable="data.html">
+	<cf_objectconfigurator params="#objectparams#">
+	<cfoutput>
+	<div class="mura-control-group">
+			<label class="mura-control-label" for="masatranslationstooltype">Tool Type</label>
+			<label class="radio inline">
+				<input type="radio" class="objectParam" name="masatranslationstooltype" value="list" <cfif objectparams.masatranslationstooltype eq 'list'> checked="checked"</cfif> />
+				List
+			</label>
+			<label class="radio inline">
+				<input type="radio" class="objectParam" name="masatranslationstooltype" value="selectbox" <cfif objectparams.masatranslationstooltype eq 'selectbox'> checked="checked"</cfif> />
+				SelectBox
+			</label>
+		</div>
+	</cfoutput>
+	</cf_objectconfigurator>
+</cfsavecontent>
+<cfoutput>#createObject("component","mura.json").encode(data)#</cfoutput>
+<cfabort>

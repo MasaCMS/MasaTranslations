@@ -17,9 +17,9 @@
 <name>Masa Translations</name>
 <package>MasaTranslations</package>
 <directoryFormat>packageOnly</directoryFormat>
-<version>4.1.0</version>
-<provider>We Are Orange BV</provider>
-<providerURL>https://www.weareorange.eu/</providerURL>
+<version>4.1.1</version>
+<provider>We Are North Groep BV</provider>
+<providerURL>https://www.wearenorth.eu/</providerURL>
 <category>Application</category>
 <settings>
 	<setting>

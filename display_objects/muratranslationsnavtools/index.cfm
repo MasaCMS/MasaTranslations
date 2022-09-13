@@ -8,16 +8,16 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
-  param name="objectparams.muratranslationstooltype" default="list";
+  param name="objectparams.masatranslationstooltype" default="list";
 
-  pluginpath = m.globalConfig('context') & '/plugins/MuraTranslations';
-	pluginConfig = m.getPlugin('MuraTranslations');
-	translationManager = CreateObject('component', 'MuraTranslations.cfcs.translationManager').init(m.globalConfig(),pluginConfig);
+  pluginpath = m.globalConfig('context') & '/plugins/MasaTranslations';
+	pluginConfig = m.getPlugin('MasaTranslations');
+	translationManager = CreateObject('component', 'MasaTranslations.cfcs.translationManager').init(m.globalConfig(),pluginConfig);
 	rsLocales = translationManager.getAssignedSites(m.siteConfig('siteid'));
 </cfscript>
 <cfoutput>
   <cfif rsLocales.recordcount>
-    <cfif objectparams.muratranslationstooltype eq 'selectbox'>
+    <cfif objectparams.masatranslationstooltype eq 'selectbox'>
       <select class="form-control translations-nav" onchange="location.href=this.value;">
         <option value="">
           #esapiEncode('html', translationManager.getTranslationKeys().setSiteID(m.siteConfig('siteid')).load().getSelectorLabel())#
@@ -36,7 +36,7 @@
         <cfif len(selectorLabel)>
           <h3>#esapiEncode('html', selectorLabel)#</h3>
         </cfif>
-
+  
         <ul>
           <cfloop query="rslocales">
             <cfsilent>
