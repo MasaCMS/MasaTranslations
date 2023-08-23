@@ -137,19 +137,6 @@
 
 		$('.bigui__close').on('click',function(){
 			$(this).parents('.biguiMasaTranslations').hide();
-		})
-
-		// trigger via URL
-		<cfoutput>
-		<cfif len($.event('bigui'))>
-		setTimeout(function(){
-			var panel = '##panel-#$.event('bigui')#';
-			$(panel).find('.bigui__launch').trigger('click');
-			<cfif $.event('bigui') is 'schedule'>
-				$('##editDates').show();
-			</cfif>
-		}, 500);
-		</cfif>
-		</cfoutput>
+		})	
 	});
 </script>
