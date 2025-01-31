@@ -40,5 +40,6 @@
 	<eventHandler event="onContentEdit" scriptfile="onContentEdit.cfm"/>
 	<eventHandler event="onContentSave" component="cfcs.eventHandler"/>
 	<eventHandler event="onContentDelete" component="cfcs.eventHandler"/>
+	<eventHandler event="onRenderStart" component="onRenderStart.cfm"/>
 </eventHandlers>
 </plugin>
