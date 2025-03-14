@@ -9,11 +9,11 @@
 	<cfsavecontent variable="extraLinks">
 		<cfloop query="rslocales">
 			<cfsilent>
-				<cfset javaLocale=lcase(m.getBean('settingsManager').getSite(rsLocales.siteid).getJavaLocale())>
+				<cfset language = lcase(listFirst(m.getBean('settingsManager').getSite(rsLocales.siteid).getJavaLocale(), "_"))>
 				<cfset theURL = translationManager.lookUpTranslation(m.event('crumbdata'), rsLocales.siteid)/>
 			</cfsilent>
 <cfoutput>
-		<link rel="alternate" hreflang="#javaLocale#" href="#theURL#" />
+		<link rel="alternate" hreflang="#language#" href="#theURL#" />
 </cfoutput>
 		</cfloop>
 	</cfsavecontent>
