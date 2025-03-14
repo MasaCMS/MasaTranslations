@@ -5,17 +5,26 @@
 	rsLocales = translationManager.getAssignedSites(m.siteConfig('siteid'));
 	hasTranslation = translationManager.hasTranslation(m.getContentID(),m.siteConfig('siteid'))
 </cfscript>
+
 <cfif hasTranslation>
 	<cfsavecontent variable="extraLinks">
-		<cfloop query="rslocales">
+		<cfoutput>
+			<!--- link to the page itself --->
 			<cfsilent>
-				<cfset language = lcase(listFirst(m.getBean('settingsManager').getSite(rsLocales.siteid).getJavaLocale(), "_"))>
-				<cfset theURL = translationManager.lookUpTranslation(m.event('crumbdata'), rsLocales.siteid)/>
+				<cfset language = lcase(replace(application.rbFactory.CF2Java(m.siteconfig().getSiteLocale()), "_", "-"))>
+				<cfset theURL = m.getCurrentURL()>
 			</cfsilent>
-<cfoutput>
-		<link rel="alternate" hreflang="#language#" href="#theURL#" />
-</cfoutput>
-		</cfloop>
+			<link rel="alternate" hreflang="#language#" href="#theURL#">
+
+			<!--- link to the page in other languages --->
+			<cfloop query="rslocales">
+				<cfsilent>
+					<cfset language = lcase(replace(m.getBean('settingsManager').getSite(rsLocales.siteid).getJavaLocale(), "_", "-"))>
+					<cfset theURL = translationManager.lookUpTranslation(m.event('crumbdata'), rsLocales.siteid)>
+				</cfsilent>
+				<link rel="alternate" hreflang="#language#" href="#theURL#">
+			</cfloop>
+		</cfoutput>
 	</cfsavecontent>
 	<cfhtmlhead text="#extraLinks#">
 </cfif>
