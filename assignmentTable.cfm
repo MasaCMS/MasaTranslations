@@ -21,15 +21,15 @@
 	<cfset pSession.init()>
 </cfif>
 </cfsilent>
-<cfoutput>				
+<cfoutput>
 	<div class="mura-control-group">
-		<label><!--- Empty on purpose---></label>  
+		<label><!--- Empty on purpose---></label>
 		<div class="mura-control justify">
 			<div class="bigui biguiMasaTranslations" id="bigui__masatranslations" data-label="Manage Masa Translations">
 				<div class="bigui__title">Manage Masa Translations</div>
 				<div class="bigui__controls">
 					<div class="mura-control-group" id="masatranslations-selector">
-						<label><!---placeholder do not delete ---></label>									
+						<label><!---placeholder do not delete ---></label>
 						<div class="mura-control justify" id="expires-notify">
 							<dl class="oneColumn">
 								<dt class="first">
@@ -58,7 +58,7 @@
 										<!---<hr>#translation.getLocal().getRemoteID()#::#translation.getLocal().getRemoteSiteID()#<hr>--->
 										<cfset mapping=translation.getLocal()>
 										<cfset mapCrumb=application.contentGateway.getCrumblist(mapping.getRemoteID(),mapping.getRemoteSiteID())>
-								
+
 										<tr>
 											<td class="actions" id="stm_admin#rsLocales.siteid#">
 												<a class="show-actions" href="javascript:;" ontouch="this.onclick();" onclick="showTableControls(this);"><i class="mi-ellipsis-v"></i></a>
@@ -71,19 +71,19 @@
 														<cfelse>
 															<li class="edit editOff"><a>Edit</a></li>
 														</cfif>
-														
+
 													<cfelse>
-														<cfif application.permUtility.getModulePerm('00000000000000000000000000000000000',rsLocales.siteid)>	
-														<li class="select"><a target="_top" href="#application.configBean.getContext()#/plugins/#pluginConfig.getDirectory()#/search.cfm?localSiteID=#translation.getLocalSiteID()#&localID=#translation.getLocalID()#&remoteSiteID=#translation.getRemoteSiteID()#&parentID=#url.parentID#&type=#url.type#&contentHistID=#url.contentHistID#" onclick="return saveBeforeTranslation(this.href);"><i class="mi-plus-circle"></i>Select</a></li>	
+														<cfif application.permUtility.getModulePerm('00000000000000000000000000000000000',rsLocales.siteid)>
+														<li class="select"><a target="_top" href="#application.configBean.getContext()#/plugins/#pluginConfig.getDirectory()#/search.cfm?localSiteID=#translation.getLocalSiteID()#&localID=#translation.getLocalID()#&remoteSiteID=#translation.getRemoteSiteID()#&parentID=#url.parentID#&type=#url.type#&contentHistID=#url.contentHistID#" onclick="return saveBeforeTranslation(this.href);"><i class="mi-plus-circle"></i>Select</a></li>
 														<cfelse>
-														<li class="select selectOff"><a>Select</a></li>	
+														<li class="select selectOff"><a>Select</a></li>
 														</cfif>
 													</cfif>
 													</ul>
-												</div>	
+												</div>
 											</td>
-											<td>#HTMLEditFormat(rsLocales.alias)#</td>
-											<td>#HTMLEditFormat(rsLocales.site)#</td>
+											<td>#encodeForHtml(rsLocales.alias)#</td>
+											<td>#encodeForHtml(rsLocales.site)#</td>
 											<td class="var-width" id="stm_crumb#rsLocales.siteid#">
 											<cfif len(mapping.getRemoteID())>
 											#application.contentRenderer.dspZoom(mapCrumb)#
@@ -101,7 +101,7 @@
 								</cfif>
 							</table>
 							</dl>
-						</div>								
+						</div>
 					</div>
 				</div>
 			</div> <!--- /.bigui --->
@@ -114,7 +114,7 @@
 
 		// create hidden BigUI with button, close link
 		var renderBigUIMasaTranslations = function(el){
-			var idstr = $(el).attr('id');			
+			var idstr = $(el).attr('id');
 			var labelstr = $(el).attr('data-label');
 			$(el).before('<a class="bigui__launch" data-rel="' + idstr + '" href="#">' + labelstr + '</a>');
 			<!--- todo: resource bundle key for 'done' --->
@@ -130,13 +130,13 @@
 
 		$('.bigui__launch').on('click',function(){
 			var rel = $(this).attr('data-rel');
-			$('.biguiMasaTranslations').hide();			
+			$('.biguiMasaTranslations').hide();
 			$('#' + rel).show();
 			return false;
 		});
 
 		$('.bigui__close').on('click',function(){
 			$(this).parents('.biguiMasaTranslations').hide();
-		})	
+		})
 	});
 </script>

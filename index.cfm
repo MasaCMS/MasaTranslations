@@ -32,7 +32,7 @@
 <cfoutput>
 
 <div class="mura-header">
-	<h1>#HTMLEditFormat(pluginConfig.getName())#</h1>
+	<h1>#encodeForHtml(pluginConfig.getName())#</h1>
 </div> <!-- /.mura-header -->
 
 <div class="block block-constrain">
@@ -65,16 +65,16 @@
 				</div>
 			<cfloop query="rsSites">
 				<div class="mura-3 mura-control-group pull-left">
-						#htmlEditFormat(rsSites.site)#
+						#encodeForHtml(rsSites.site)#
 				</div>
 				<div class="mura-3 mura-control-group pull-left">
-						#htmlEditFormat(rsSites.sitelocale)#
+						#encodeForHtml(rsSites.sitelocale)#
 				</div>
 				<div class="mura-3 mura-control-group pull-left">
-					<input class="text" name="alias#rsSites.currentRow#" type="text" value="#htmlEditFormat(rsSites.alias)#" required="true" message="The alias for the '#htmlEditFormat(rsSites.site)#' is required" maxlength="100"/>
+					<input class="text" name="alias#rsSites.currentRow#" type="text" value="#encodeForHtml(rsSites.alias)#" required="true" message="The alias for the '#encodeForHtml(rsSites.site)#' is required" maxlength="100"/>
 				</div>
 				<div class="mura-3 mura-control-group pull-left">
-					<input class="text" name="selectorlabel#rsSites.currentRow#" type="text" value="#htmlEditFormat(rsSites.selectorlabel)#" required="false" message="The selector label for the '#htmlEditFormat(rsSites.site)#' is required" maxlength="100"/>
+					<input class="text" name="selectorlabel#rsSites.currentRow#" type="text" value="#encodeForHtml(rsSites.selectorlabel)#" required="false" message="The selector label for the '#encodeForHtml(rsSites.site)#' is required" maxlength="100"/>
 				<input type="hidden" name="siteid#rsSites.currentRow#" value="#rsSites.siteid#"/>
 				</div>
 			</cfloop>
@@ -156,7 +156,7 @@
 				You can process the imports in an ad hoc fashion (i.e. only a few pages at a time) and perform the export/import operation as often as you like.
 				All imported content is automatically mapped to the original (export) site.</p>
 				<p>You do not have to create an entire site structure to allow translations for each.
-				Every translation can be created on an ad hoc basis, although some fleshing out of site architecture may be necessary for a good user-experience.</p>				
+				Every translation can be created on an ad hoc basis, although some fleshing out of site architecture may be necessary for a good user-experience.</p>
 			</div> <!-- /.block-content -->
 		</div> <!-- /.block-bordered -->
 	</div> <!-- /.tab-pane -->
