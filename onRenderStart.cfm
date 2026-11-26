@@ -3,7 +3,7 @@
 	pluginConfig = m.getPlugin('MasaTranslations');
 	translationManager = CreateObject('component', 'MasaTranslations.cfcs.translationManager').init(m.globalConfig(),pluginConfig);
 	rsLocales = translationManager.getAssignedSites(m.siteConfig('siteid'));
-	hasTranslation = translationManager.hasTranslation(m.getContentID(),m.siteConfig('siteid'))
+	hasTranslation = translationManager.hasTranslation(m.getContentID(),m.siteConfig('siteid'));
 </cfscript>
 
 <cfif hasTranslation>
