@@ -41,7 +41,7 @@
 <cfoutput>
 <cfif arrayLen(crumbdata) lte 30>
   <div class="alert alert-warning">
-  <span>You are assigning the #HTMLEditFormat(ucase(translationManager.getTranslationKeys().setSiteID(request.remoteSiteID).load().getName()))# translation peer for the #HTMLEditFormat(ucase(translationManager.getTranslationKeys().setSiteID(request.localSiteID).load().getName()))# version of this content:
+  <span>You are assigning the #encodeForHtml(ucase(translationManager.getTranslationKeys().setSiteID(request.remoteSiteID).load().getName()))# translation peer for the #encodeForHtml(ucase(translationManager.getTranslationKeys().setSiteID(request.localSiteID).load().getName()))# version of this content:
   <br>#application.contentRenderer.dspZoom(crumbData)#
   </span>
   </div>
@@ -71,16 +71,16 @@
             <div class="mura-control-group justify">
 
               <div class="mura-input-set">
-                <input name="keywords" required="true" value="<cfif len(request.keywords)>#HTMLEditFormat(request.keywords)#</cfif>" onclick="this.value='';" placeholder="Keyword Search" value="#htmlEditFormat(request.keywords)#" type="text" class="text med" />
+                <input name="keywords" required="true" value="<cfif len(request.keywords)>#encodeForHtml(request.keywords)#</cfif>" onclick="this.value='';" placeholder="Keyword Search" value="#encodeForHtml(request.keywords)#" type="text" class="text med" />
                 <input type="submit" class="btn" value="Search">
               </div>
 
-              <input type="hidden" value="#HTMLEditFormat(request.localSiteID)#" name="localSiteID" />
-              <input type="hidden" value="#HTMLEditFormat(request.localID)#" name="localID" />
-              <input type="hidden" value="#HTMLEditFormat(request.remoteSiteID)#" name="remoteSiteID" />
-              <input type="hidden" value="#HTMLEditFormat(request.type)#" name="type" />
-              <input type="hidden" value="#HTMLEditFormat(request.contentHistID)#" name="contentHistID" />
-              <input type="hidden" value="#HTMLEditFormat(request.parentID)#" name="parentID" />
+              <input type="hidden" value="#encodeForHtml(request.localSiteID)#" name="localSiteID" />
+              <input type="hidden" value="#encodeForHtml(request.localID)#" name="localID" />
+              <input type="hidden" value="#encodeForHtml(request.remoteSiteID)#" name="remoteSiteID" />
+              <input type="hidden" value="#encodeForHtml(request.type)#" name="type" />
+              <input type="hidden" value="#encodeForHtml(request.contentHistID)#" name="contentHistID" />
+              <input type="hidden" value="#encodeForHtml(request.parentID)#" name="parentID" />
             </div>
           </form>
           <cfif len(request.keywords)>
@@ -124,12 +124,12 @@
             </div>
           </cfif>
 
-          <input type="hidden" value="#HTMLEditFormat(request.localSiteID)#" name="localSiteID" />
-          <input type="hidden" value="#HTMLEditFormat(request.localID)#" name="localID" />
-          <input type="hidden" value="#HTMLEditFormat(request.remoteSiteID)#" name="remoteSiteID" />
-          <input type="hidden" value="#HTMLEditFormat(request.type)#" name="type" />
-          <input type="hidden" value="#HTMLEditFormat(request.contentHistID)#" name="contentHistID" />
-          <input type="hidden" value="#HTMLEditFormat(request.parentID)#" name="parentID" />
+          <input type="hidden" value="#encodeForHtml(request.localSiteID)#" name="localSiteID" />
+          <input type="hidden" value="#encodeForHtml(request.localID)#" name="localID" />
+          <input type="hidden" value="#encodeForHtml(request.remoteSiteID)#" name="remoteSiteID" />
+          <input type="hidden" value="#encodeForHtml(request.type)#" name="type" />
+          <input type="hidden" value="#encodeForHtml(request.contentHistID)#" name="contentHistID" />
+          <input type="hidden" value="#encodeForHtml(request.parentID)#" name="parentID" />
         </form>
         </cfif>
       </cfif>
